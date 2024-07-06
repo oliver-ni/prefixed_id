@@ -21,7 +21,8 @@ defmodule PrefixedUUID.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~> 0.33.0"}
+      {:rustler, "~> 0.33.0"},
+      {:ecto, "~> 3.11"}
     ]
   end
 end
