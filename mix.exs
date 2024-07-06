@@ -7,7 +7,13 @@ defmodule PrefixedID.MixProject do
       version: "0.1.0",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      name: "Prefixed ID",
+      source_url: "https://github.com/oliver-ni/prefixed_id",
+      docs: [
+        main: "readme",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -22,7 +28,8 @@ defmodule PrefixedID.MixProject do
   defp deps do
     [
       {:rustler, "~> 0.33.0"},
-      {:ecto, "~> 3.11"}
+      {:ecto, "~> 3.11"},
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false}
     ]
   end
 end
