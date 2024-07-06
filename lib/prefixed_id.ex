@@ -18,10 +18,15 @@ defmodule PrefixedID do
     schema = Keyword.fetch!(opts, :schema)
 
     cond do
-      opts[:primary_key] -> %{primary_key: true, prefix: get_pkey_prefix(opts)}
-      opts[:foreign_key] -> %{field: field, schema: schema}
-      true -> raise "Must be used as either a primary or foreign key."
+      opts[:foreign_key] -> %{foreign_key: true, field: field, schema: schema}
+      prefix = opts[:prefix] -> %{prefix: validate_prefix(prefix)}
+      true -> raise "Must specify :prefix option if not used as a foreign key."
     end
+  end
+
+  defp validate_prefix(prefix) do
+    if String.contains?(prefix, "_"), do: raise("The prefix must not contain an underscore.")
+    prefix
   end
 
   @impl true
@@ -55,18 +60,11 @@ defmodule PrefixedID do
     |> from_numeric_uuid(params)
   end
 
-  defp get_pkey_prefix(opts) do
-    prefix = Keyword.get(opts, :prefix)
-    if is_nil(prefix), do: raise("The :prefix option is required for primary keys.")
-    if String.contains?(prefix, "_"), do: raise("The prefix must not contain an underscore.")
+  defp prefix(%{prefix: prefix}) do
     prefix
   end
 
-  defp prefix(%{primary_key: true, prefix: prefix}) do
-    prefix
-  end
-
-  defp prefix(%{field: field, schema: schema}) do
+  defp prefix(%{foreign_key: true, field: field, schema: schema}) do
     %{related: related, related_key: related_key} = schema.__schema__(:association, field)
     {:parameterized, __MODULE__, %{prefix: prefix}} = related.__schema__(:type, related_key)
     prefix
