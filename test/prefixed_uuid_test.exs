@@ -1,8 +1,8 @@
-defmodule PrefixedUUIDTest do
+defmodule PrefixedIDTest do
   use ExUnit.Case
-  doctest PrefixedUUID
+  doctest PrefixedID
 
   test "greets the world" do
-    assert PrefixedUUID.hello() == :world
+    assert PrefixedID.hello() == :world
   end
 end

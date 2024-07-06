@@ -27,6 +27,6 @@ fn generate_numeric_uuidv7() -> u128 {
 }
 
 rustler::init!(
-    "Elixir.PrefixedUUID.Nifs",
+    "Elixir.PrefixedID.Nifs",
     [base62_encode, base62_decode, generate_numeric_uuidv7]
 );

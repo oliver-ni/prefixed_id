@@ -1,9 +1,9 @@
-defmodule PrefixedUUID do
+defmodule PrefixedID do
   @moduledoc """
   Ecto type for human-readable prefixed Base62-encoded UUIDs.
   """
   use Ecto.ParameterizedType
-  alias PrefixedUUID.Nifs
+  alias PrefixedID.Nifs
 
   @typedoc """
   The human-readable prefixed string format.

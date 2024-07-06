@@ -1,9 +1,9 @@
-defmodule PrefixedUUID.Nifs do
+defmodule PrefixedID.Nifs do
   @moduledoc """
-  Rust NIFs used by the `PrefixedUUID` module.
+  Rust NIFs used by the `PrefixedID` module.
   """
 
-  use Rustler, otp_app: :prefixed_uuid, crate: "prefixed_uuid"
+  use Rustler, otp_app: :prefixed_id, crate: "prefixed_id"
 
   @doc """
   Encodes a 128-bit number as a Base62 string.

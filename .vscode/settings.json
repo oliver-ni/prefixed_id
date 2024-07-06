@@ -1,5 +1,5 @@
 {
     "rust-analyzer.linkedProjects": [
-        "native/prefixed_uuid/Cargo.toml"
+        "native/prefixed_id/Cargo.toml"
     ]
 }
