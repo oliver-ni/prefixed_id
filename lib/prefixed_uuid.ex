@@ -67,6 +67,11 @@ defmodule PrefixedUUID do
   end
 
   @impl true
+  def dump(nil, _dumper, _params) do
+    nil
+  end
+
+  @impl true
   def dump(value, _dumper, %{prefix: prefix}) do
     with [^prefix, base62_uuid] <- String.split(value, "_"),
          {:ok, uuid} <- Nifs.base62_decode(base62_uuid) do
