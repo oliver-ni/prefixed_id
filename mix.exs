@@ -25,9 +25,11 @@ defmodule PrefixedID.MixProject do
 
   defp package do
     [
-      maintainers: ["Oliver Ni"],
+      name: "prefixed_id",
+      maintainers: ["Oliver Ni <oliver.ni@gmail.com>"],
       licenses: ["MPL-2.0"],
-      links: %{"GitHub" => @source_url}
+      links: %{"GitHub" => @source_url},
+      files: ["lib", "native", "mix.exs", "README.md", "LICENSE"]
     ]
   end
 
