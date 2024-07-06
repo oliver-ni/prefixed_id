@@ -26,8 +26,14 @@ defmodule PrefixedID do
 
   @impl true
   def cast(nil, _params), do: {:ok, nil}
-  def cast(<<_::288>> = hex_uuid, params), do: Ecto.UUID.cast(hex_uuid) |> cast(params)
   def cast(<<_::128>> = raw_uuid, params), do: load(raw_uuid, nil, params)
+
+  def cast(<<_::288>> = hex_uuid, params) do
+    with {:ok, hex_uuid} <- Ecto.UUID.cast(hex_uuid),
+         {:ok, raw_uuid} <- Ecto.UUID.dump(hex_uuid) do
+      cast(raw_uuid, params)
+    end
+  end
 
   def cast(value, params) do
     with {:ok, _} <- to_numeric_uuid(value, params) do
