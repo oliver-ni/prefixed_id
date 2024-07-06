@@ -60,4 +60,9 @@ defmodule MyApp.Schema do
     end
   end
 end
+
+defmodule MyApp.User do
+  use MyApp.Schema, id_prefix: "user"
+  ...
+end
 ```
