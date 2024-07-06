@@ -10,4 +10,6 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
+base62 = "2.0.2"
 rustler = "0.33.0"
+uuid = { version = "1.9.1", features = ["fast-rng", "std", "v7"], default-features = false }
