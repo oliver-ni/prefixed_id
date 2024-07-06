@@ -5,9 +5,6 @@ defmodule PrefixedID do
   use Ecto.ParameterizedType
   alias PrefixedID.Nifs
 
-  @typedoc """
-  The human-readable prefixed string format.
-  """
   @type t :: String.t()
 
   @impl true
