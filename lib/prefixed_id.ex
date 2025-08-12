@@ -66,7 +66,7 @@ defmodule PrefixedID do
 
   defp prefix(%{foreign_key: true, field: field, schema: schema}) do
     %{related: related, related_key: related_key} = schema.__schema__(:association, field)
-    {:parameterized, __MODULE__, %{prefix: prefix}} = related.__schema__(:type, related_key)
+    {:parameterized, {__MODULE__, %{prefix: prefix}}} = related.__schema__(:type, related_key)
     prefix
   end
 
