@@ -18,7 +18,7 @@ The package can be installed by adding `prefixed_id` to your list of dependencie
 ```elixir
 def deps do
   [
-    {:prefixed_id, "~> 0.1.0"}
+    {:prefixed_id, "~> 0.3.0"}
   ]
 end
 ```
